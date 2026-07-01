@@ -4,7 +4,7 @@ const views = {
         <div class="page-view">
             <h1>Serafim Sharkov</h1>
             <h2>Computer Science @ San Francisco State University</h2>
-            <p>Welcome to my portfolio. I'm a software engineer focused on backend architecture, system-level programming, and building scalable applications.</p>
+            <p>Welcome to my portfolio. Im a Computer Science student at San Francisco State University with a deep interest in backend engineering and systems-level programming. I am currently working as an AI and Automation Intern at Diamond Foods, where I focus on bridging the gap between complex software architecture and real-world applications. I thrive in high-energy, collaborative environments, which has led to multiple hackathon victories at events like Hack Merced, Hornet Hacks, and SF Hacks. Whether I'm optimizing a stateless REST API, exploring the intricacies of memory management, or building out my Linux environment, I am driven by the challenge of creating efficient, scalable solutions.</p>
         </div>
     `,
     about: `
@@ -34,12 +34,28 @@ const views = {
             </div>
         </div>
     `,
+    skills: `
+        <div class="page-view">
+            <h1>Skills</h1>
+            <h2>AI & Automation Intern | Diamond Foods, LLC</h2>
+            <p>I specialize in building stateless REST APIs, automated local development environments using Docker, and working with relational databases like PostgreSQL. When I'm not writing code or tackling low-level computer architecture concepts, you can usually find me rock climbing.</p>
+        </div>
+    `,
+    education: `
+        <div class="page-view">
+            <h1>Education</h1>
+            <h2>AI & Automation Intern | Diamond Foods, LLC</h2>
+            <p>I specialize in building stateless REST APIs, automated local development environments using Docker, and working with relational databases like PostgreSQL. When I'm not writing code or tackling low-level computer architecture concepts, you can usually find me rock climbing.</p>
+        </div>
+    `,
     contact: `
         <div class="page-view">
             <h1>Contact</h1>
             <p>Interested in collaborating on AI agent workflows or backend infrastructure? Let's connect.</p>
-            <p style="margin-top: 1rem;"><strong>Email:</strong> your.email@example.com</p>
-            <p><strong>GitHub:</strong> github.com/yourusername</p>
+            <p style="margin-top: 1rem;"><strong>Email:</strong> ssharkov@sfsu.edu</p>
+            <p><strong>LinkedIn:</strong> linkedin.com/in/serafim-sharkov/</p>
+            <p><strong>GitHub:</strong> github.com/syssefim</p>
+            <p><strong>X:</strong> x.com/seraf03</p>
         </div>
     `
 };
