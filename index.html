@@ -9,40 +9,22 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Your visible website content goes here -->
-    <h1>Hello, World! This is my portfolio...</h1>
+    <nav>
+        <!-- The data-link attribute marks these as SPA links -->
+        <a href="/" data-link>Home</a>
+        <a href="/about" data-link>About</a>
+        <a href="/projects" data-link>Projects</a>
+        <a href="/skills" data-link>Skills</a>
+        <a href="/education" data-link>Education</a>
+        <a href="/contact" data-link>Contact</a>
+    </nav>
 
-    <!-- Home -->
-    <div id="home">
-        <p>Home</p>
-    </div> 
+    <!--When a user clicks one of the navigation links, the JavaScript 
+    router figures out which page was requested, fetches the HTML for 
+    that specific page, and injects it directly inside this-->
+    <div id="app"></div>
 
-    <!-- About -->
-    <div id="about">
-        <p>About</p>
-    </div> 
-
-    <!-- Projects -->
-    <div id="projects">
-        <p>Projects</p>
-    </div> 
-
-    <!-- Skills -->
-    <div id="skills">
-        <p>Skills</p>
-    </div> 
-
-    <!-- Education -->
-    <div id="education">
-        <p>Education</p>
-    </div> 
-
-    <!-- Contact -->
-    <div id="contact">
-        <p>Contact</p>
-    </div> 
-
-    <!-- Link to external JavaScript file -->
-    <script></script>
+    <!-- Javascript -->
+    <script src="script.js"></script>
 </body>
 </html>
