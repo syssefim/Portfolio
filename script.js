@@ -2,50 +2,47 @@
 
 const routes = [
 
-    { path: "/", view: "<h1>Home</h1><p>Hello there, and welcome to my portfolio. My name is Serafim Sharkov and I'm a software engineer with a primary interest in backend systems and AI automation.</p><p>Featured Projects:</p><ul><li>TheraCall</li><li>QuizDock</li><li>Sortify</li><li>View all projects</li></ul>"},
-
-    { path: "/about", view: "<h1>About</h1><p>I've been coding and developing projects in one form or another since about 2016/2017, and am currently pursueing a Bachelor's in Computer Science @ San Francisco State University.</p>" },
-
-    { path: "/experience", view: "<h1>Experience</h1><p>Coming soon.</p>" },
-
-    { path: "/projects", view: "<h1>Projects</h1><p>Check out my latest projects.</p>" },
-
-    { path: "/skills", view: "<h1>Skills</h1><p>Here are my key skills.</p>" },
-
-    { path: "/education", view: "<h1>Education</h1><p>Learn about my educational background.</p>" },
-
-    { path: "/contact", view: "<h1>Contact</h1><p>Send me a message.</p>" }
+    { path: "/", viewPath: "/views/home.html" },
+    { path: "/about", viewPath: "/views/home.html" },
+    { path: "/experience", viewPath: "/views/home.html" },
+    { path: "/projects", viewPath: "/views/home.html" },
+    { path: "/skills", viewPath: "/views/home.html" },
+    { path: "/education", viewPath: "/views/home.html" },
+    { path: "/contact", viewPath: "/views/home.html" }
 
 ];
 
 
 
-// 2. The core router function
-
-const router = () => {
-
+// 2. The core router function (must be async now)
+const router = async () => {
     // Get the current path (e.g., "/about")
-
     const currentPath = location.pathname; 
 
-
-
-    // Find the matching route, or default to the Home route if not found (404 fallback)
-
+    // Find the matching route, or default to the Home route if not found
     let match = routes.find(route => route.path === currentPath);
-
     if (!match) {
-
         match = routes[0]; 
-
     }
 
+    const appContainer = document.querySelector("#app");
 
-
-    // Inject the view content into the DOM
-
-    document.querySelector("#app").innerHTML = match.view;
-
+    // If the route has a viewPath, fetch the HTML file
+    if (match.viewPath) {
+        try {
+            const response = await fetch(match.viewPath);
+            if (!response.ok) throw new Error(`Network response was not ok for ${match.viewPath}`);
+            const html = await response.text();
+            appContainer.innerHTML = html;
+        } catch (error) {
+            console.error("Failed to load view:", error);
+            appContainer.innerHTML = "<h1>Error loading page</h1>";
+        }
+    } 
+    // Otherwise, use the hardcoded 'view' string for your other routes
+    else if (match.view) {
+        appContainer.innerHTML = match.view;
+    }
 };
 
 
