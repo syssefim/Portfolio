@@ -2,9 +2,11 @@
 
 const routes = [
 
-    { path: "/", view: "<h1>Home</h1><p>Welcome to my portfolio!</p>" },
+    { path: "/", view: "<h1>Home</h1><p>Hello there, and welcome to my portfolio. My name is Serafim Sharkov and I'm a software engineer with a primary interest in backend systems and AI automation.</p><p>Featured Projects:</p><ul><li>TheraCall</li><li>QuizDock</li><li>Sortify</li><li>View all projects</li></ul>"},
 
-    { path: "/about", view: "<h1>About</h1><p>Learn more about me.</p>" },
+    { path: "/about", view: "<h1>About</h1><p>I've been coding and developing projects in one form or another since about 2016/2017, and am currently pursueing a Bachelor's in Computer Science @ San Francisco State University.</p>" },
+
+    { path: "/experience", view: "<h1>Experience</h1><p>Coming soon.</p>" },
 
     { path: "/projects", view: "<h1>Projects</h1><p>Check out my latest projects.</p>" },
 
