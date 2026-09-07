@@ -3,30 +3,163 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Serafim Sharkov</title>
-    
-    <!-- Link to external CSS stylesheet -->
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <title>Serafim Sharkov | Portfolio</title>
+
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f5f5f5;
+            color: #222;
+        }
+
+        header {
+            text-align: center;
+            padding: 50px 20px 30px;
+            background-color: #222;
+            color: white;
+        }
+
+        header h1 {
+            margin: 0 0 10px;
+        }
+
+        header p {
+            margin: 0;
+            color: #ccc;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 20px;
+            background-color: #222;
+        }
+
+        nav button {
+            background: none;
+            border: none;
+            color: #aaa;
+            font-size: 1rem;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+
+        nav button:hover {
+            color: white;
+        }
+
+        nav button.active {
+            color: white;
+            border-bottom: 2px solid white;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .view {
+            display: none;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        .view.active {
+            display: block;
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+    </style>
 </head>
+
 <body>
+
+    <header>
+        <h1>Serafim Sharkov</h1>
+        <p>Software Developer</p>
+    </header>
+
     <nav>
-        <!-- The data-link attribute marks these as SPA links -->
-        <a href="/" data-link>Home</a>
-        <a href="/about" data-link>About</a>
-        <a href="/experience" data-link>Experience</a>
-        <a href="/projects" data-link>Projects</a>
-        <a href="/skills" data-link>Skills</a>
-        <a href="/education" data-link>Education</a>
-        <a href="/contact" data-link>Contact</a>
+        <button class="nav-button active" data-view="projects">
+            Projects
+        </button>
+
+        <button class="nav-button" data-view="experience">
+            Experience / Education
+        </button>
+
+        <button class="nav-button" data-view="contact">
+            Contact
+        </button>
     </nav>
 
-    <!--When a user clicks one of the navigation links, the JavaScript 
-    router figures out which page was requested, fetches the HTML for 
-    that specific page, and injects it directly inside this-->
-    <div id="app"></div>
+    <main>
 
-    <!-- Javascript -->
-    <script src="script.js"></script>
+        <section id="projects" class="view active">
+            <h2>Projects</h2>
+
+            <article>
+                <h3>QuizDock</h3>
+                <p>A description of your project can go here.</p>
+            </article>
+
+            <article>
+                <h3>Another Project</h3>
+                <p>A description of another project can go here.</p>
+            </article>
+        </section>
+
+        <section id="experience" class="view">
+            <h2>Experience / Education</h2>
+
+            <h3>San Francisco State University</h3>
+            <p>B.S. Computer Science</p>
+        </section>
+
+        <section id="contact" class="view">
+            <h2>Contact</h2>
+
+            <p>Email: your-email@example.com</p>
+            <p>GitHub: github.com/yourusername</p>
+            <p>LinkedIn: linkedin.com/in/yourusername</p>
+        </section>
+
+    </main>
+
+    <script>
+        const buttons = document.querySelectorAll(".nav-button");
+        const views = document.querySelectorAll(".view");
+
+        buttons.forEach(button => {
+            button.addEventListener("click", () => {
+
+                // Remove active state from everything
+                buttons.forEach(button => {
+                    button.classList.remove("active");
+                });
+
+                views.forEach(view => {
+                    view.classList.remove("active");
+                });
+
+                // Activate clicked button
+                button.classList.add("active");
+
+                // Show corresponding section
+                const viewId = button.dataset.view;
+                document.getElementById(viewId).classList.add("active");
+            });
+        });
+    </script>
+
 </body>
 </html>
