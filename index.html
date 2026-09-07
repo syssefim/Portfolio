@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -140,27 +141,57 @@
         const buttons = document.querySelectorAll(".nav-button");
         const views = document.querySelectorAll(".view");
 
+        function showView(viewId) {
+            const validViews = ["projects", "experience", "contact"];
+
+            // Fall back to projects if the URL contains an invalid view
+            if (!validViews.includes(viewId)) {
+                viewId = "projects";
+            }
+
+            // Remove active state from all buttons and views
+            buttons.forEach(button => {
+                button.classList.remove("active");
+            });
+
+            views.forEach(view => {
+                view.classList.remove("active");
+            });
+
+            // Show the selected view
+            document.getElementById(viewId).classList.add("active");
+
+            // Highlight the corresponding navigation button
+            const activeButton = document.querySelector(
+                `[data-view="${viewId}"]`
+            );
+
+            activeButton.classList.add("active");
+        }
+
+        // Update the URL when a navigation button is clicked
         buttons.forEach(button => {
             button.addEventListener("click", () => {
-
-                // Remove active state from everything
-                buttons.forEach(button => {
-                    button.classList.remove("active");
-                });
-
-                views.forEach(view => {
-                    view.classList.remove("active");
-                });
-
-                // Activate clicked button
-                button.classList.add("active");
-
-                // Show corresponding section
                 const viewId = button.dataset.view;
-                document.getElementById(viewId).classList.add("active");
+                window.location.hash = viewId;
             });
         });
+
+        // Handle browser back/forward buttons
+        window.addEventListener("hashchange", () => {
+            const viewId =
+                window.location.hash.substring(1) || "projects";
+
+            showView(viewId);
+        });
+
+        // Load the correct view when the page first opens
+        const initialView =
+            window.location.hash.substring(1) || "projects";
+
+        showView(initialView);
     </script>
 
 </body>
 </html>
+```
